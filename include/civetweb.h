@@ -395,6 +395,11 @@ CIVETWEB_API void mg_send_file(struct mg_connection *conn, const char *path);
      > 0   number of bytes read into the buffer. */
 CIVETWEB_API int mg_read(struct mg_connection *, void *buf, size_t len);
 
+/* Enforce closing socket after serving current request even if connection
+ * is in keep-alive mode.
+ * Useful when serving content without specified length while keep-alive mode
+ * should be generally preserved. */
+CIVETWEB_API void mg_enforce_close(struct mg_connection *conn);
 
 /* Get the value of particular HTTP header.
 

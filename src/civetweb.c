@@ -2472,6 +2472,11 @@ int mg_vprintf(struct mg_connection *conn, const char *fmt, va_list ap)
     return len;
 }
 
+void mg_enforce_close(struct mg_connection *conn)
+{
+    conn->must_close = 1;
+}
+
 int mg_printf(struct mg_connection *conn, const char *fmt, ...)
 {
     va_list ap;
